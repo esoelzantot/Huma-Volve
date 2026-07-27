@@ -2,8 +2,11 @@ import 'payment-processor.interface.dart';
 import 'product.class.dart';
 
 class Order {
+  String id;
   List<OrderItem> items = [];
   Invoice? invoice;
+
+  Order(this.id);
 
   void addItem(Product product, int quantity) {
     items.add(OrderItem(product, quantity));

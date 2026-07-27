@@ -1,9 +1,8 @@
-import 'product.class.dart';
-
-class Inventory<T> {
+class Inventory<Product> {
+  String name;
   List<Product> products = [];
 
-  Inventory(this.products);
+  Inventory(this.name, this.products);
 
   void addProduct(Product product) {
     products.add(product);
