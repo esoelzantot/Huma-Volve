@@ -17,20 +17,21 @@ class CheckingAccount extends BankAccount {
   }
 
   @override
-  void withdraw(int pin, double amount) {
+  bool withdraw(int pin, double amount) {
     // TODO: implement withdraw
     if (pin != this.pin) {
       print("Incorrect PIN");
-      return;
+      return false;
     }
     if (amount <= 0) {
       print("Cannot withdraw negative amount");
-      return;
+      return false;
     }
     if (amount > this.balance + _overdraftLimit) {
       print("Insufficient balance");
-      return;
+      return false;
     }
     this.balance -= amount;
+    return true;
   }
 }

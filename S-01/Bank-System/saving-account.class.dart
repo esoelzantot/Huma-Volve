@@ -26,18 +26,18 @@ class SavingsAccount extends BankAccount {
 
   @override
   @override
-  void withdraw(int pin, double amount) {
+  bool withdraw(int pin, double amount) {
     if (pin != this.pin) {
       print("Incorrect PIN");
-      return;
+      return false;
     }
     if (amount <= 0) {
       print("Cannot withdraw negative amount");
-      return;
+      return false;
     }
     if (amount > this.balance) {
       print("Insufficient balance");
-      return;
+      return false;
     }
 
     final now = DateTime.now();
@@ -47,12 +47,14 @@ class SavingsAccount extends BankAccount {
 
     if (noOfWithdrawals >= 3) {
       print("Maximum number of withdrawals per month exceeded.");
-      return;
+      return false;
     }
 
     this.balance -= amount;
     noOfWithdrawals += 1;
     lastWithdrawalDate = now;
+
+    return true;
   }
 
   bool _isNewMonth(DateTime last, DateTime now) {

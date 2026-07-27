@@ -22,7 +22,7 @@ abstract class BankAccount {
   };
 
   // ====== METHODS ======
-  void withdraw(int pin, double amount);
+  bool withdraw(int pin, double amount);
   double interest(double rate);
 
   void deposit(double amount) {
@@ -37,5 +37,13 @@ abstract class BankAccount {
     print("Account Number: $_accountNumber");
     print("Holder Name: $_holderName");
     print("Balance: $_balance");
+  }
+
+  void transferFunds(BankAccount sender, BankAccount receiver, double amount) {
+    bool check = sender.withdraw(sender.pin, amount);
+    if (check)
+      receiver.deposit(amount);
+    else
+      print("Transfer failed.");
   }
 }
