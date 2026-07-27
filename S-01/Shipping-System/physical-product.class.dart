@@ -1,6 +1,8 @@
 import 'product.class.dart';
+import 'trackable.mixin.dart';
+import 'discountable.mixin.dart';
 
-class PhysicalProduct extends Product {
+class PhysicalProduct extends Product with Trackable, Discountable {
   double weightInKg;
   double shippingRatePerKg;
 
@@ -14,7 +16,8 @@ class PhysicalProduct extends Product {
 
   @override
   double calcFinalPrice() {
-    // TODO: implement calcFinalPrice
-    throw UnimplementedError();
+    double shippingCost = weightInKg * shippingRatePerKg;
+    double priceBeforeDiscount = basePrice + shippingCost;
+    return applyDiscount(priceBeforeDiscount);
   }
 }

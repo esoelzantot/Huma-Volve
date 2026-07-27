@@ -1,6 +1,7 @@
 import 'order.class.dart';
+import 'trackable.mixin.dart';
 
-class DeliveryAgent {
+class DeliveryAgent with Trackable {
   String _name;
   Order? _order;
   double _deliveryFee = 0.0;
