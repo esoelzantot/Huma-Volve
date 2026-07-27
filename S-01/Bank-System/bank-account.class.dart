@@ -14,6 +14,16 @@ abstract class BankAccount {
 
   // ====== SETTERS ======
   set pin(int pin) => _pin = pin;
+  set balance(double balance) => {
+    if (balance >= 0)
+      _balance = balance
+    else
+      print("Cannot set negative balance."),
+  };
+
+  // ====== METHODS ======
+  void withdraw(int pin, double amount);
+  double interest(double rate);
 
   void deposit(double amount) {
     if (amount <= 0) {
@@ -22,24 +32,6 @@ abstract class BankAccount {
     }
     _balance += amount;
   }
-
-  void withdraw(int pin, double amount) {
-    if (pin != _pin) {
-      print("Incorrect PIN.");
-      return;
-    }
-    if (amount <= 0) {
-      print("Cannot withdraw negative amount.");
-      return;
-    }
-    if (amount > _balance) {
-      print("Insufficient balance.");
-      return;
-    }
-    _balance -= amount;
-  }
-
-  double interest(double rate);
 
   void printInfo() {
     print("Account Number: $_accountNumber");
