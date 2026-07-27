@@ -3,11 +3,22 @@ import 'bank-account.class.dart';
 class CheckingAccount extends BankAccount {
   double _overdraftLimit = 0.0;
 
-  CheckingAccount(int accountNumber, String holderName, double balance, int pin)
-    : super(accountNumber, holderName, balance, pin);
+  CheckingAccount(
+    int accountNumber,
+    String holderName,
+    double balance,
+    int pin,
+    this._overdraftLimit,
+  ) : super(accountNumber, holderName, balance, pin);
 
   get overdraftLimit => _overdraftLimit;
   set overdraftLimit(double value) => _overdraftLimit = value;
+
+  @override
+  void printInfo() {
+    print("Account Type: Checking Account");
+    super.printInfo();
+  }
 
   @override
   double interest(double rate) {

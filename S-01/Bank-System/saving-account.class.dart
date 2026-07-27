@@ -1,21 +1,17 @@
 import 'bank-account.class.dart';
 
 class SavingsAccount extends BankAccount {
-  double _interestRate;
   int noOfWithdrawals = 0;
   DateTime? lastWithdrawalDate;
 
-  SavingsAccount(
-    int accountNumber,
-    String holderName,
-    double balance,
-    int pin,
-    this._interestRate,
-  ) : super(accountNumber, holderName, balance, pin);
+  SavingsAccount(int accountNumber, String holderName, double balance, int pin)
+    : super(accountNumber, holderName, balance, pin);
 
-  get interestRate => _interestRate;
-
-  set interestRate(double rate) => _interestRate = rate;
+  @override
+  void printInfo() {
+    print("Account Type: Savings Account");
+    super.printInfo();
+  }
 
   @override
   double interest(double rate) {

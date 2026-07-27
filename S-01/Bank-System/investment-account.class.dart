@@ -11,6 +11,13 @@ class InvestmentAccount extends BankAccount {
     int pin,
     this.risk,
   ) : super(accountNumber, holderName, balance, pin);
+
+  @override
+  void printInfo() {
+    print("Account Type: Investment Account");
+    super.printInfo();
+  }
+
   @override
   double interest(double rate) {
     // TODO: implement interest

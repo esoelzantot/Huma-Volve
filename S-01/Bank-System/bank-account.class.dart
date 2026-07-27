@@ -37,9 +37,14 @@ abstract class BankAccount {
     print("Account Number: $_accountNumber");
     print("Holder Name: $_holderName");
     print("Balance: $_balance");
+    print("================================");
   }
 
-  void transferFunds(BankAccount sender, BankAccount receiver, double amount) {
+  static void transferFunds(
+    BankAccount sender,
+    BankAccount receiver,
+    double amount,
+  ) {
     bool check = sender.withdraw(sender.pin, amount);
     if (check)
       receiver.deposit(amount);

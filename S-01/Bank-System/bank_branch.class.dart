@@ -1,9 +1,10 @@
 import 'bank-account.class.dart';
 
 class BankBranch {
+  String name;
   List<BankAccount> accounts = [];
 
-  BankBranch(this.accounts);
+  BankBranch(this.name, this.accounts);
 
   void addAccount(BankAccount account) => accounts.add(account);
 
