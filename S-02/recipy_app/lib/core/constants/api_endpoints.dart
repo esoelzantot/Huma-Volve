@@ -4,4 +4,6 @@ class ApiEndpoints {
   static const String getCategories = '/categories.php';
 
   static const String getCategoryMeals = '/filter.php?c={category}';
+
+  static const String getMealDetails = '/lookup.php?i={id}';
 }

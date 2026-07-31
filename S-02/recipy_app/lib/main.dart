@@ -6,6 +6,8 @@ import 'package:recipy_app/features/home/domian/use_cases/get_categories_meals.u
 import 'package:recipy_app/features/home/presentation/cubits/get_categories/get_categories_cubit.dart';
 import 'package:recipy_app/features/home/presentation/cubits/get_meals/get_meals_cubit.dart';
 import 'package:recipy_app/features/home/presentation/views/recipe_home_screen.dart';
+import 'package:recipy_app/features/meal_details/domain/use_cases/get_meal_details.usecase.dart';
+import 'package:recipy_app/features/meal_details/presentation/cubits/get_meal_details_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +23,11 @@ void main() async {
         BlocProvider(
           create: (context) =>
               GetMealsCubit(useCase: getIt.get<GetCategoryMealsUseCase>()),
+        ),
+
+        BlocProvider(
+          create: (context) =>
+              GetMealDetailsCubit(useCase: getIt.get<GetMealDetailsUseCase>()),
         ),
       ],
       child: const MyApp(),

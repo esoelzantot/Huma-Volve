@@ -13,7 +13,7 @@ class MealModel extends MealEntity {
     this.strMealThumb,
     this.strArea,
     this.strCountry,
-  }) : super(name: strMeal!, image: strMealThumb!);
+  }) : super(name: strMeal!, image: strMealThumb!, id: idMeal!);
 
   factory MealModel.fromJson(Map<String, dynamic> json) => MealModel(
     idMeal: json['idMeal'],

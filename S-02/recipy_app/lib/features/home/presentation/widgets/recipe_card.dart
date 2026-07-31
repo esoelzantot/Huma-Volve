@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipy_app/core/constants/app_colors.dart';
 import 'package:recipy_app/features/home/domian/entities/meal.entity.dart';
+import 'package:recipy_app/features/meal_details/presentation/cubits/get_meal_details_cubit.dart';
+import 'package:recipy_app/features/meal_details/presentation/views/meal_details_screen.dart';
 
 class RecipeCard extends StatelessWidget {
   final MealEntity meal;
@@ -16,7 +19,16 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        BlocProvider.of<GetMealDetailsCubit>(
+          context,
+        ).getMealDetails(id: meal.id);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => MealDetailsScreen(meal: meal),
+          ),
+        );
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
