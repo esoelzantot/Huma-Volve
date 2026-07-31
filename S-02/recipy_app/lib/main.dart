@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:recipy_app/features/screens/recipe_home_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipy_app/core/services/services_locator.dart';
+import 'package:recipy_app/features/home/domian/use_cases/get_categories.usecase.dart';
+import 'package:recipy_app/features/home/domian/use_cases/get_categories_meals.usecase.dart';
+import 'package:recipy_app/features/home/presentation/cubits/get_categories/get_categories_cubit.dart';
+import 'package:recipy_app/features/home/presentation/cubits/get_meals/get_meals_cubit.dart';
+import 'package:recipy_app/features/home/presentation/views/recipe_home_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              GetCategoriesCubit(useCase: getIt.get<GetCategoriesUseCase>()),
+        ),
+
+        BlocProvider(
+          create: (context) =>
+              GetMealsCubit(useCase: getIt.get<GetCategoryMealsUseCase>()),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

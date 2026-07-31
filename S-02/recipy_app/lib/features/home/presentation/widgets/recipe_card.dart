@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:recipy_app/core/constants/app_colors.dart';
-import 'package:recipy_app/core/models/meal_model.dart';
+import 'package:recipy_app/features/home/domian/entities/meal.entity.dart';
 
 class RecipeCard extends StatelessWidget {
-  final MealModel meal;
+  final MealEntity meal;
   final VoidCallback? onTap;
   final VoidCallback? onFavoriteToggle;
   const RecipeCard({
@@ -29,7 +29,7 @@ class RecipeCard extends StatelessWidget {
                 child: AspectRatio(
                   aspectRatio: 1.1,
                   child: Image.network(
-                    meal.strMealThumb!,
+                    meal.image,
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) return child;
@@ -63,7 +63,7 @@ class RecipeCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2.0),
             child: Text(
-              meal.strMeal!,
+              meal.name,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:recipy_app/core/models/meal_model.dart';
+import 'package:recipy_app/features/home/domian/entities/meal.entity.dart';
 
 sealed class GetMealsState extends Equatable {
   const GetMealsState();
@@ -17,7 +17,7 @@ final class GetMealsLoading extends GetMealsState {
 }
 
 final class GetMealsSuccess extends GetMealsState {
-  final List<MealModel> meals;
+  final List<MealEntity> meals;
   const GetMealsSuccess({required this.meals});
   @override
   List<Object> get props => [];
