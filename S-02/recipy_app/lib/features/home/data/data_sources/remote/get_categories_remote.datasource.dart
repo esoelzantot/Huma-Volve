@@ -1,5 +1,5 @@
-import 'package:recipy_app/features/home/domian/entities/category.entity.dart';
+import 'package:recipy_app/features/home/data/models/category_model.dart';
 
 abstract class GetCategoriesRemoteDataSource {
-  Future<List<CategoryEntity>> getCategories();
+  Future<List<CategoryModel>> getCategories();
 }

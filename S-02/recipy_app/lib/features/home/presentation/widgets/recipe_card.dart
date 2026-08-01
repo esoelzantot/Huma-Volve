@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipy_app/core/constants/app_colors.dart';
@@ -40,31 +41,21 @@ class RecipeCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 child: AspectRatio(
                   aspectRatio: 1.1,
-                  child: Image.network(
-                    meal.image,
-                    fit: BoxFit.cover,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Container(
-                        color: Colors.grey.shade200,
-                        child: const Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: AppColors.primaryBrown,
-                          ),
-                        ),
-                      );
-                    },
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        color: Colors.grey.shade300,
-                        child: const Icon(
-                          Icons.restaurant,
-                          color: AppColors.primaryBrown,
-                          size: 32,
-                        ),
-                      );
-                    },
+                  child: CachedNetworkImage(
+                    imageUrl: meal.image,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) =>
+                            CircularProgressIndicator(
+                              value: downloadProgress.progress,
+                            ),
+                    errorWidget: (context, url, error) => Container(
+                      color: Colors.grey.shade300,
+                      child: const Icon(
+                        Icons.restaurant,
+                        color: AppColors.primaryBrown,
+                        size: 32,
+                      ),
+                    ),
                   ),
                 ),
               ),

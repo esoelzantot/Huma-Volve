@@ -1,10 +1,19 @@
+import 'package:hive_flutter/adapters.dart';
 import 'package:recipy_app/features/home/domian/entities/meal.entity.dart';
 
+part 'meal_model.g.dart';
+
+@HiveType(typeId: 1)
 class MealModel extends MealEntity {
+  @HiveField(0)
   String? idMeal;
+  @HiveField(1)
   String? strMeal;
+  @HiveField(2)
   String? strMealThumb;
+  @HiveField(3)
   String? strArea;
+  @HiveField(4)
   String? strCountry;
 
   MealModel({

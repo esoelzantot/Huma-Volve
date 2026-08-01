@@ -11,7 +11,7 @@ import 'package:recipy_app/features/meal_details/presentation/cubits/get_meal_de
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupServiceLocator();
+  await setupServiceLocator();
   runApp(
     MultiBlocProvider(
       providers: [
